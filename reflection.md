@@ -8,6 +8,13 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - List at least two concrete bugs you noticed at the start  
   (for example: "the secret number kept changing" or "the hints were backwards").
 
+1) The number entered keeps saying to go lower when the secret number was higher when we entered and the opposite when we need to go lower it kept going to say higher
+
+2) The reset game button doesnt allow to submit the guess button once its reset
+
+3) Easy says 6 attempts but gives the answer in 5 attempts when it should give it on the 6th attempt
+
+4) The range of the number of attemps for easy is  smaller compared to the normal - The levels of difficulty have different attempts - Hard = 5, Easy = 6, Normal = 8 with ranges that dont seem to align with the difficulty level
 ---
 
 ## 2. How did you use AI as a teammate?

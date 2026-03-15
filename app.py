@@ -38,6 +38,8 @@ def check_guess(guess, secret):
             return "Too High", "📈 Go HIGHER!"
         else:
             return "Too Low", "📉 Go LOWER!"
+    
+    # FIXME 1: Logic breaks here
     except TypeError:
         g = str(guess)
         if g == secret:
@@ -132,6 +134,7 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
+    # FIXME 2: Logic breaks here
     st.session_state.attempts = 0
     st.session_state.secret = random.randint(1, 100)
     st.success("New game started.")
@@ -155,6 +158,7 @@ if submit:
     else:
         st.session_state.history.append(guess_int)
 
+        # FIXME 1: Logic breaks here
         if st.session_state.attempts % 2 == 0:
             secret = str(st.session_state.secret)
         else:

@@ -23,6 +23,17 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
+1) I used Claude Chat on this project
+2) One example that Claude suggested was for the error with regards to the high and low. It explained to me well regarding where and why the error was occuring as I asked with examples. This is a snippet of the explaination that it provided me :
+
+    String comparison is lexicographic, not numeric. So "9" > "42" is True because "9" > "4" character-by-character. This causes completely wrong hints — e.g., guessing 9 when the secret is 42 would say "Go HIGHER!" (correct numerically), but guessing 50 when secret is 42 would compare "50" vs "42" — "5" > "4", so it correctly says higher... but guessing 9 vs 90 would compare "9" > "9..." and break down.
+
+    The root cause: The intentional type-switching on even attempts (str vs int) poisons the comparison logic into unreliable string ordering instead of numeric ordering.
+This helped me understand the error and I asked it what could be done to fix it and move the logic to logic_utils and it showed me the suggestions which I verified before accepting
+3) The AI wasn't incorrect when I was checking the code, one area I thought it mislead me was when I was trying to understand what the parse_guess function is doing and whether it removed its usage when trying to refactor the code but when I asked it again, it showed me that the function is still being used. 
+
+However, when using AI to write test cases, it did write an incorrect test case which was trying to assert 80 == 90 but it found the error within itself and I specifically asked it to fix it so it fixed the test case accordingly
+
 ---
 
 ## 3. Debugging and testing your fixes
@@ -31,7 +42,9 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - Describe at least one test you ran (manual or using pytest)  
   and what it showed you about your code.
 - Did AI help you design or understand any tests? How?
-
+1) I individually read each of the logic and psedocoded it and then I tried running the streamlit run app.py to check each of the errors that have been fixed using the help of AI.
+2) One of the tests that I checked was to ensure that the number entered gets the right hint of going higher or lower according to the secret number and once the number is guessed correctly, I made sure that once the new game is clicked, the history and score is cleared and reset. Once that is done, I checked to see if the game actually worked when I pressed submit guess button with the new game.
+3) Yes, AI was used to create the pytest cases. Once each case was created, I looked over them to understand what was done and ever asked claude to explain me what each individual test does so that I can reconfirm my understanding.
 ---
 
 ## 4. What did you learn about Streamlit and state?
